@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Van MY 高中学习笔记 | 范铭扬</title>
+    <style>
+        /* 全局样式（维基百科核心风格） */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #000;
+            background-color: #f8f9fa;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 顶部导航栏 */
+        .header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #a7d7f9;
+            padding: 8px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #0645ad;
+            text-decoration: none;
+        }
+
+        .header-nav a {
+            color: #0645ad;
+            text-decoration: none;
+            margin: 0 8px;
+            padding: 4px 8px;
+        }
+
+        .header-nav a:hover {
+            color: #d33;
+            text-decoration: underline;
+        }
+
+        .search-box {
+            padding: 4px;
+            border: 1px solid #a2a9b1;
+            border-radius: 2px;
+            margin-left: 10px;
+        }
+
+        /* 主体布局 */
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* 左侧侧边栏（学科导航） */
+        .sidebar {
+            width: 200px;
+            flex-shrink: 0;
+            background-color: #fff;
+            border: 1px solid #a7d7f9;
+            padding: 10px;
+        }
+
+        .sidebar h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #0645ad;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 5px;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin: 8px 0;
+        }
+
+        .sidebar-nav a {
+            color: #0645ad;
+            text-decoration: none;
+        }
+
+        .sidebar-nav a:hover {
+            color: #d33;
+            text-decoration: underline;
+        }
+
+        /* 主内容区 */
+        .main-content {
+            flex: 1;
+            background-color: #fff;
+            border: 1px solid #a7d7f9;
+            padding: 20px;
+            min-width: 300px;
+        }
+
+        .main-content h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #000;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 10px;
+        }
+
+        .main-content h2 {
+            font-size: 22px;
+            margin: 25px 0 15px;
+            color: #0645ad;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 5px;
+        }
+
+        .main-content p {
+            margin: 10px 0;
+        }
+
+        /* 资料卡片 */
+        .card {
+            border: 1px solid #a7d7f9;
+            padding: 15px;
+            background-color: #f9fcff;
+            margin: 20px 0;
+        }
+
+        .card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #54595d;
+            font-size: 14px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 6px 12px;
+            background-color: #f8f9fa;
+            border: 1px solid #a2a9b1;
+            color: #0645ad;
+            text-decoration: none;
+            border-radius: 2px;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background-color: #eaf3ff;
+            color: #d33;
+            text-decoration: underline;
+        }
+
+        /* 右侧信息框 */
+        .info-box {
+            width: 250px;
+            flex-shrink: 0;
+            background-color: #f9fcff;
+            border: 1px solid #a7d7f9;
+            padding: 15px;
+            min-width: 250px;
+        }
+
+        .info-box h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 5px;
+        }
+
+        .info-item {
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #a7d7f9;
+            margin-top: 20px;
+            color: #54595d;
+            font-size: 14px;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar, .info-box {
+                width: 100%;
+            }
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .header-nav {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <header class="header">
+        <a href="index.html" class="logo">Van MY 高中学习笔记</a>
+        <div class="header-right">
+            <nav class="header-nav">
+                <a href="#home">首页</a>
+                <a href="#resources">学习资料</a>
+                <a href="#about">关于我</a>
+            </nav>
+            <input type="text" class="search-box" placeholder="搜索资料...">
+        </div>
+    </header>
+
+    <!-- 主体内容 -->
+    <div class="container">
+        <!-- 左侧侧边栏（学科导航） -->
+        <aside class="sidebar">
+            <h3>学科分类</h3>
+            <ul class="sidebar-nav">
+                <li><a href="#math">数学</a></li>
+                <li><a href="#physics">物理</a></li>
+                <li><a href="#chemistry">化学</a></li>
+                <li><a href="#chinese">语文</a></li>
+                <li><a href="#english">英语</a></li>
+                <li><a href="#history">历史</a></li>
+                <li><a href="#geography">地理</a></li>
+                <li><a href="#politics">政治</a></li>
+                <li><a href="#biology">生物</a></li>
+            </ul>
+
+            <h3>资源类型</h3>
+            <ul class="sidebar-nav">
+                <li><a href="#notes">课堂笔记</a></li>
+                <li><a href="#thinking">学习思考</a></li>
+                <li><a href="#books">教辅列表</a></li>
+            </ul>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <h1 id="home">Van MY 高中学习笔记与资源分享</h1>
+            <p>本网站用于存储和分享我的高中学习笔记、思考和教辅列表，供大家观看和下载。</p>
+
+            <!-- 学习资料板块 -->
+            <h2 id="resources">学习资料</h2>
+            <p>已整理的学习资料如下：</p>
+
+            <!-- 高一寒假必修二资料入口卡片 -->
+            <div class="card">
+                <h3>好课在线-高一寒假必修二学习资料文件集</h3>
+                <p>上传时间：2026/03/08</p>
+                <p>包含数学、物理、化学必修二全章节详细笔记（多份PDF文件），覆盖核心知识点和解题方法。</p>
+                <a href="pages/gaoyihanjiabixiuer.html" class="btn">查看并下载全部资料</a>
+            </div>
+
+            <!-- 关于我 -->
+            <h2 id="about">关于我</h2>
+            <p>我是Van MY，本网站所有资料均为个人整理的高中学习笔记和资源，免费分享供大家学习交流使用。</p>
+        </main>
+
+        <!-- 右侧信息框 -->
+        <aside class="info-box">
+            <h3>网站信息</h3>
+            <div class="info-item">
+                <strong>创建时间：</strong>2026年3月
+            </div>
+            <div class="info-item">
+                <strong>核心资源：</strong>高一寒假必修二资料集
+            </div>
+            <div class="info-item">
+                <strong>使用说明：</strong><br>
+                点击资料卡片中的按钮即可查看/下载对应资源，所有资源为PDF格式。
+            </div>
+        </aside>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>© 2026 Van MY 高中学习笔记 | 范铭扬 | 所有资源仅供学习交流使用</p>
+    </footer>
+
+    <script>
+        // 平滑滚动（点击导航锚点时）
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
